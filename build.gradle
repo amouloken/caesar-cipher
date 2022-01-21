@@ -9,7 +9,10 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.6'
 }
+
+version = scmVersion.version
 
 repositories {
     // Use jcenter for resolving dependencies.
@@ -26,14 +29,23 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
-    
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
 
+jar {
+    archiveBaseName = 'caesar-cipher'
+    archiveVersion =  version
+    manifest {
+        attributes 'Implementation-Title': 'Caesar cipher',
+                   'Implementation-Version': archiveVersion,
+                   'Main-Class': 'caesars.cipher.Main'
+    }
+}
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
     testLogging {
-		events "PASSED", "SKIPPED", "FAILED"
-	}
+        events "PASSED", "SKIPPED", "FAILED"
+    }
 }
