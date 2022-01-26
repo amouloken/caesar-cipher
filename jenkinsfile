@@ -1,6 +1,6 @@
 pipeline {
     agent any 
-    checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'newjenkins', url: 'git@github.com:amouloken/caesar-cipher.git']]])
+    checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'essai', url: 'git@github.com:amouloken/caesar-cipher.git']]])
  
     stages {
         stage('Build') {
